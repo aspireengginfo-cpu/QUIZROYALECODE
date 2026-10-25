@@ -271,10 +271,15 @@ export class GameEngine {
 
     this.io.to(roomCode).emit('room:state', room);
 
-    // After 4 seconds of reveal, show Leaderboard intermission
+    // Smooth in-place reveal: after 3.8 seconds, directly advance to next question or finish!
     const timer = setTimeout(() => {
-      this.showLeaderboardIntermission(roomCode);
-    }, 4500);
+      room.currentQuestionIndex++;
+      if (room.currentQuestionIndex < questions.length) {
+        this.deliverCurrentQuestion(roomCode);
+      } else {
+        this.finishGame(roomCode);
+      }
+    }, 3800);
     this.roomTimers.set(roomCode, timer);
   }
 

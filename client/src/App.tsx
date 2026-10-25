@@ -203,7 +203,7 @@ export const App: React.FC = () => {
           />
         ) : room.status === 'COUNTDOWN' ? (
           <CountdownOverlay />
-        ) : room.status === 'QUESTION_ACTIVE' && room.currentQuestion ? (
+        ) : (room.status === 'QUESTION_ACTIVE' || room.status === 'QUESTION_REVEAL') && room.currentQuestion ? (
           <QuizScreen
             question={room.currentQuestion}
             room={room}
@@ -211,17 +211,6 @@ export const App: React.FC = () => {
             onSubmitAnswer={handleSubmitAnswer}
             selectedOptionIndex={selectedOptionIndex}
             hasLockedAnswer={hasLockedAnswer}
-          />
-        ) : room.status === 'QUESTION_REVEAL' && room.currentQuestion ? (
-          <RevealScreen
-            question={room.currentQuestion}
-            room={room}
-            currentPlayer={currentPlayer!}
-          />
-        ) : room.status === 'LEADERBOARD' ? (
-          <LeaderboardScreen
-            room={room}
-            currentPlayer={currentPlayer!}
           />
         ) : room.status === 'GAME_OVER' ? (
           <PodiumScreen
