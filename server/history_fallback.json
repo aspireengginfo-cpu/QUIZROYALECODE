@@ -1,0 +1,140 @@
+[
+  {
+    "roomCode": "P3T33D",
+    "startedAt": "2026-10-25T14:42:35.175Z",
+    "completedAt": "2026-10-25T14:46:16.823Z",
+    "totalQuestions": 10,
+    "winner": {
+      "playerId": "player_1792939402913_qcbaef",
+      "nickname": "krishnam",
+      "score": 1458,
+      "avatar": "👑"
+    },
+    "leaderboard": [
+      {
+        "rank": 1,
+        "playerId": "player_1792939402913_qcbaef",
+        "nickname": "krishnam",
+        "avatar": "👑",
+        "score": 1458,
+        "correctCount": 2
+      },
+      {
+        "rank": 2,
+        "playerId": "player_1792938137208_6amlji",
+        "nickname": "KingArthur",
+        "avatar": "👑",
+        "score": 870,
+        "correctCount": 1
+      }
+    ],
+    "questionsSummary": [
+      {
+        "questionId": "geo-013",
+        "question": "On which continent is the Amazon Rainforest primarily located?",
+        "category": "Geography"
+      },
+      {
+        "questionId": "nat-005",
+        "question": "A group of flamingos is commonly called which of the following terms?",
+        "category": "Nature"
+      },
+      {
+        "questionId": "his-008",
+        "question": "Which Chinese dynasty was responsible for beginning construction of the Terracotta Army?",
+        "category": "History"
+      },
+      {
+        "questionId": "spo-003",
+        "question": "What is the standard distance of an official marathon race in kilometers?",
+        "category": "Sports"
+      },
+      {
+        "questionId": "nat-015",
+        "question": "What is the primary food source of wild giant pandas?",
+        "category": "Nature"
+      },
+      {
+        "questionId": "geo-009",
+        "question": "Which desert is the driest non-polar desert in the world?",
+        "category": "Geography"
+      },
+      {
+        "questionId": "spo-015",
+        "question": "In which sport do competitors vie for the Stanley Cup trophy?",
+        "category": "Sports"
+      },
+      {
+        "questionId": "spo-008",
+        "question": "In golf, what is the score called when a player completes a hole three strokes under par?",
+        "category": "Sports"
+      },
+      {
+        "questionId": "gen-011",
+        "question": "How many keys are on a standard modern grand piano keyboard?",
+        "category": "General Knowledge"
+      },
+      {
+        "questionId": "tech-015",
+        "question": "What does \"REST\" stand for in web API architecture?",
+        "category": "Technology"
+      }
+    ]
+  },
+  {
+    "roomCode": "TEST99",
+    "startedAt": "2026-10-25T13:59:32.412Z",
+    "completedAt": "2026-10-25T13:59:32.412Z",
+    "totalQuestions": 10,
+    "winner": {
+      "playerId": "p_winner",
+      "nickname": "Champion",
+      "score": 8500,
+      "avatar": "👑"
+    },
+    "leaderboard": [
+      {
+        "rank": 1,
+        "playerId": "p_winner",
+        "nickname": "Champion",
+        "score": 8500,
+        "correctCount": 9
+      },
+      {
+        "rank": 2,
+        "playerId": "p_runnerup",
+        "nickname": "RunnerUp",
+        "score": 6200,
+        "correctCount": 7
+      }
+    ]
+  },
+  {
+    "roomCode": "TEST99",
+    "startedAt": "2026-10-25T13:46:12.241Z",
+    "completedAt": "2026-10-25T13:46:12.241Z",
+    "totalQuestions": 10,
+    "winner": {
+      "playerId": "p_winner",
+      "nickname": "Champion",
+      "score": 8500,
+      "avatar": "👑"
+    },
+    "leaderboard": [
+      {
+        "rank": 1,
+        "playerId": "p_winner",
+        "nickname": "Champion",
+        "score": 8500,
+        "correctCount": 9
+      },
+      {
+        "rank": 2,
+        "playerId": "p_runnerup",
+        "nickname": "RunnerUp",
+        "score": 6200,
+        "correctCount": 7
+      }
+    ]
+  }
+]

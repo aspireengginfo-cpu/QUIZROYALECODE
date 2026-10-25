@@ -1,0 +1,24 @@
+{
+  "name": "quiz-royale",
+  "version": "1.0.0",
+  "description": "Quiz Royale — Real-Time Multiplayer Trivia Battle",
+  "main": "server/dist/index.js",
+  "scripts": {
+    "install:all": "npm install && npm --prefix server install && npm --prefix client install",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "build:client": "npm --prefix client run build",
+    "build:server": "npm --prefix server run build",
+    "build": "npm run build:server && npm run build:client",
+    "start": "node server/dist/index.js",
+    "test:server": "npm --prefix server test",
+    "test": "npm run test:server"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
