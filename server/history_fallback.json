@@ -1,6 +1,34 @@
 [
   {
     "roomCode": "TEST99",
+    "startedAt": "2026-10-25T17:17:30.435Z",
+    "completedAt": "2026-10-25T17:17:30.435Z",
+    "totalQuestions": 10,
+    "winner": {
+      "playerId": "p_winner",
+      "nickname": "Champion",
+      "score": 8500,
+      "avatar": "👑"
+    },
+    "leaderboard": [
+      {
+        "rank": 1,
+        "playerId": "p_winner",
+        "nickname": "Champion",
+        "score": 8500,
+        "correctCount": 9
+      },
+      {
+        "rank": 2,
+        "playerId": "p_runnerup",
+        "nickname": "RunnerUp",
+        "score": 6200,
+        "correctCount": 7
+      }
+    ]
+  },
+  {
+    "roomCode": "TEST99",
     "startedAt": "2026-10-25T16:08:46.881Z",
     "completedAt": "2026-10-25T16:08:46.881Z",
     "totalQuestions": 10,
