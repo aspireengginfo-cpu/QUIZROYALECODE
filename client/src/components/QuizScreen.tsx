@@ -106,7 +106,11 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({
     if (!isRevealed) return;
 
     if (isUserCorrect) {
-      sound.playCorrect();
+      if ((currentPlayer.currentStreak || 0) >= 2) {
+        sound.playStreakChime();
+      } else {
+        sound.playCorrect();
+      }
     } else {
       sound.playWrong();
     }
@@ -117,7 +121,7 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [isRevealed, isUserCorrect]);
+  }, [isRevealed, isUserCorrect, currentPlayer.currentStreak]);
 
   // Keyboard shortcut listener (1/2/3/4 or A/B/C/D)
   useEffect(() => {
@@ -154,7 +158,7 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({
     <div className="w-full max-w-4xl mx-auto px-4 py-3 sm:py-5 flex flex-col items-center">
       {/* Top Status Bar */}
       <div className="w-full flex items-center justify-between mb-3 gap-2">
-        {/* Left: Question Counter */}
+        {/* Left: Question Counter & Streak */}
         <div className="flex items-center gap-2">
           <span className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-purple-300">
             QUESTION
@@ -162,6 +166,17 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({
           <span className="px-3 py-1 rounded-xl bg-purple-900/60 border border-purple-500/40 text-amber-300 font-mono font-black text-sm sm:text-base">
             {question.questionNumber} / {question.totalQuestions}
           </span>
+
+          {/* Active Streak Badge */}
+          {(currentPlayer.currentStreak || 0) >= 2 && (
+            <div className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-gradient-to-r from-orange-600 via-amber-500 to-red-600 text-white font-extrabold text-[11px] shadow-lg shadow-orange-500/40 border border-amber-300 animate-pulse">
+              <span>🔥</span>
+              <span>{currentPlayer.currentStreak} STREAK</span>
+              <span className="bg-black/30 px-1 py-0.2 rounded font-mono text-[9px]">
+                {currentPlayer.currentStreak >= 4 ? '2x' : currentPlayer.currentStreak === 3 ? '1.5x' : '1.2x'}
+              </span>
+            </div>
+          )}
         </div>
 
         {/* Center: Category Pill */}
@@ -222,15 +237,33 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({
           <div className="flex items-center gap-2.5">
             {isUserCorrect ? (
               <>
-                <div className="w-8 h-8 rounded-full bg-emerald-500/30 border border-emerald-400 flex items-center justify-center flex-shrink-0 animate-bounce-subtle">
-                  <Sparkles className="w-4 h-4 text-emerald-400" />
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 animate-bounce-subtle ${
+                  (currentPlayer.currentStreak || 0) >= 2
+                    ? 'bg-gradient-to-tr from-amber-500 to-orange-600 border border-amber-300 text-white shadow-lg shadow-orange-500/50'
+                    : 'bg-emerald-500/30 border border-emerald-400 text-emerald-400'
+                }`}>
+                  {(currentPlayer.currentStreak || 0) >= 2 ? (
+                    <span className="text-sm">🔥</span>
+                  ) : (
+                    <Sparkles className="w-4 h-4 text-emerald-400" />
+                  )}
                 </div>
                 <div>
-                  <div className="text-sm font-black text-emerald-300 uppercase tracking-wide">
-                    CORRECT CHOICE! +{pointsEarned.toLocaleString()} PTS
+                  <div className="text-sm font-black text-emerald-300 uppercase tracking-wide flex items-center gap-2">
+                    <span>CORRECT! +{pointsEarned.toLocaleString()} PTS</span>
+                    {(currentPlayer.currentStreak || 0) >= 2 && (
+                      <span className="bg-gradient-to-r from-orange-500 to-amber-400 text-black text-[10px] font-black px-1.5 py-0.5 rounded-full shadow-sm">
+                        {currentPlayer.currentStreak >= 4 ? '2x ON FIRE' : `${currentPlayer.lastMultiplier || 1.2}x STREAK`}
+                      </span>
+                    )}
                   </div>
                   <div className="text-[11px] text-emerald-200/80">
-                    500 Base + {Math.max(0, pointsEarned - 500)} Speed Bonus
+                    500 Base + {Math.max(0, pointsEarned - 500 - (currentPlayer.streakBonusPoints || 0))} Speed
+                    {(currentPlayer.streakBonusPoints || 0) > 0 && (
+                      <span className="text-amber-300 font-bold ml-1">
+                        + {currentPlayer.streakBonusPoints} Streak Boost! 🔥
+                      </span>
+                    )}
                   </div>
                 </div>
               </>

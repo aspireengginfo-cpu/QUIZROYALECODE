@@ -92,6 +92,28 @@ class SoundFX {
     } catch (e) {}
   }
 
+  public playStreakChime() {
+    if (this.isMuted) return;
+    try {
+      this.initCtx();
+      if (!this.ctx) return;
+      const now = this.ctx.currentTime;
+      // High-energy ascending streak chime
+      [587.33, 739.99, 880.00, 1174.66].forEach((freq, idx) => {
+        const osc = this.ctx!.createOscillator();
+        const gain = this.ctx!.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, now + idx * 0.05);
+        gain.gain.setValueAtTime(0.25, now + idx * 0.05);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.05 + 0.3);
+        osc.connect(gain);
+        gain.connect(this.ctx!.destination);
+        osc.start(now + idx * 0.05);
+        osc.stop(now + idx * 0.05 + 0.35);
+      });
+    } catch (e) {}
+  }
+
   public playWrong() {
     if (this.isMuted) return;
     try {

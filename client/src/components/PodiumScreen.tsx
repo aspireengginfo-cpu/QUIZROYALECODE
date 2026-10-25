@@ -166,7 +166,7 @@ export const PodiumScreen: React.FC<PodiumScreenProps> = ({
                       </span>
                     )}
                     <span className="block text-[11px] text-purple-300/80">
-                      {player.correctAnswersCount}/{room.totalQuestions} correct ({accuracy}%)
+                      {player.correctAnswersCount}/{room.totalQuestions} correct ({accuracy}%) • Best Streak: 🔥 {player.highestStreak || 0}
                     </span>
                   </div>
                 </div>

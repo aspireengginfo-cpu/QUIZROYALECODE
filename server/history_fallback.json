@@ -1,1 +1,112 @@
-[]
+[
+  {
+    "roomCode": "TEST99",
+    "startedAt": "2026-10-25T16:08:46.881Z",
+    "completedAt": "2026-10-25T16:08:46.881Z",
+    "totalQuestions": 10,
+    "winner": {
+      "playerId": "p_winner",
+      "nickname": "Champion",
+      "score": 8500,
+      "avatar": "👑"
+    },
+    "leaderboard": [
+      {
+        "rank": 1,
+        "playerId": "p_winner",
+        "nickname": "Champion",
+        "score": 8500,
+        "correctCount": 9
+      },
+      {
+        "rank": 2,
+        "playerId": "p_runnerup",
+        "nickname": "RunnerUp",
+        "score": 6200,
+        "correctCount": 7
+      }
+    ]
+  },
+  {
+    "roomCode": "BUHBS9",
+    "startedAt": "2026-10-25T15:55:44.270Z",
+    "completedAt": "2026-10-25T15:59:11.903Z",
+    "totalQuestions": 10,
+    "winner": {
+      "playerId": "player_1792943831426_t3pdhy",
+      "nickname": "Challenger",
+      "score": 2496,
+      "avatar": "👑"
+    },
+    "leaderboard": [
+      {
+        "rank": 1,
+        "playerId": "player_1792943831426_t3pdhy",
+        "nickname": "Challenger",
+        "avatar": "👑",
+        "score": 2496,
+        "correctCount": 3
+      },
+      {
+        "rank": 2,
+        "playerId": "player_1792938137208_6amlji",
+        "nickname": "KnightRider",
+        "avatar": "⚡",
+        "score": 2453,
+        "correctCount": 3
+      }
+    ],
+    "questionsSummary": [
+      {
+        "questionId": "tech-011",
+        "question": "What does \"RAM\" stand for in computer hardware?",
+        "category": "Technology"
+      },
+      {
+        "questionId": "geo-014",
+        "question": "Which of the Great Lakes is located entirely within the United States?",
+        "category": "Geography"
+      },
+      {
+        "questionId": "geo-008",
+        "question": "Which African nation is known as the \"Rainbow Nation\"?",
+        "category": "Geography"
+      },
+      {
+        "questionId": "nat-011",
+        "question": "What type of creature is a Portuguese Man-of-War?",
+        "category": "Nature"
+      },
+      {
+        "questionId": "spo-012",
+        "question": "Which driver has won a record-tying 7 Formula One World Drivers’ Championships alongside Michael Schumacher?",
+        "category": "Sports"
+      },
+      {
+        "questionId": "his-014",
+        "question": "What was the ancient trade route connecting China to the Mediterranean region called?",
+        "category": "History"
+      },
+      {
+        "questionId": "sci-006",
+        "question": "What fundamental particle carries the electromagnetic force?",
+        "category": "Science"
+      },
+      {
+        "questionId": "nat-003",
+        "question": "How many hearts does an octopus possess?",
+        "category": "Nature"
+      },
+      {
+        "questionId": "tech-004",
+        "question": "What does the acronym \"SSD\" stand for in computing hardware?",
+        "category": "Technology"
+      },
+      {
+        "questionId": "his-012",
+        "question": "Which civilization constructed the ancient wonder known as Machu Picchu?",
+        "category": "History"
+      }
+    ]
+  }
+]

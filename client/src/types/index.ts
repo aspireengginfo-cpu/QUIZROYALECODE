@@ -29,6 +29,10 @@ export interface Player {
   lastAnswerIndex?: number;
   lastPointsEarned?: number;
   correctAnswersCount: number;
+  currentStreak: number;
+  highestStreak: number;
+  lastMultiplier?: number;
+  streakBonusPoints?: number;
   connected: boolean;
 }
 

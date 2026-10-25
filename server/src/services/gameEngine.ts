@@ -43,6 +43,10 @@ export class GameEngine {
       room.players.forEach((p) => {
         p.score = 0;
         p.correctAnswersCount = 0;
+        p.currentStreak = 0;
+        p.highestStreak = 0;
+        p.lastMultiplier = 1.0;
+        p.streakBonusPoints = 0;
         p.hasAnsweredCurrent = false;
         p.lastAnswerIndex = undefined;
         p.lastPointsEarned = 0;
@@ -165,15 +169,20 @@ export class GameEngine {
     const scoreResult = ScoringService.calculateScore(
       isCorrect,
       elapsedMs,
-      room.questionTimeLimit || 15
+      room.questionTimeLimit || 15,
+      player.currentStreak || 0
     );
 
-    // Lock player answer
+    // Lock player answer and update streak tracking
     player.hasAnsweredCurrent = true;
     player.lastAnswerIndex = selectedOptionIndex;
     player.lastPointsEarned = scoreResult.totalPointsEarned;
     player.lastAnswerTimeMs = elapsedMs;
     player.score += scoreResult.totalPointsEarned;
+    player.currentStreak = scoreResult.newStreak;
+    player.highestStreak = Math.max(player.highestStreak || 0, scoreResult.newStreak);
+    player.lastMultiplier = scoreResult.streakMultiplier;
+    player.streakBonusPoints = scoreResult.streakBonus;
     if (isCorrect) {
       player.correctAnswersCount++;
     }
@@ -239,6 +248,11 @@ export class GameEngine {
     room.players.forEach((p) => {
       if (p.lastAnswerIndex !== undefined && p.lastAnswerIndex >= 0 && p.lastAnswerIndex <= 3) {
         distributions[p.lastAnswerIndex]++;
+      } else {
+        // Player timed out without answering
+        p.currentStreak = 0;
+        p.lastMultiplier = 1.0;
+        p.streakBonusPoints = 0;
       }
       playerResults.push({
         playerId: p.id,

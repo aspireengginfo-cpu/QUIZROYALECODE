@@ -46,4 +46,38 @@ describe('ScoringService — Authoritative Scoring Engine', () => {
     expect(timedOut.totalPointsEarned).toBe(0);
     expect(timedOut.speedBonus).toBe(0);
   });
+
+  it('applies 1.2x streak multiplier for 2 consecutive correct answers', () => {
+    // 0ms elapsed -> raw = 1000 pts. With streak = 1 -> newStreak = 2 -> 1.2x -> 1200 pts
+    const result = ScoringService.calculateScore(true, 0, 15, 1);
+    expect(result.newStreak).toBe(2);
+    expect(result.streakMultiplier).toBe(1.2);
+    expect(result.totalPointsEarned).toBe(1200);
+    expect(result.streakBonus).toBe(200);
+  });
+
+  it('applies 1.5x streak multiplier for 3 consecutive correct answers', () => {
+    // raw = 1000 pts. With streak = 2 -> newStreak = 3 -> 1.5x -> 1500 pts
+    const result = ScoringService.calculateScore(true, 0, 15, 2);
+    expect(result.newStreak).toBe(3);
+    expect(result.streakMultiplier).toBe(1.5);
+    expect(result.totalPointsEarned).toBe(1500);
+    expect(result.streakBonus).toBe(500);
+  });
+
+  it('applies 2.0x DOUBLE POINTS multiplier for 4 or more consecutive correct answers', () => {
+    // raw = 1000 pts. With streak = 3 -> newStreak = 4 -> 2.0x -> 2000 pts!
+    const result = ScoringService.calculateScore(true, 0, 15, 3);
+    expect(result.newStreak).toBe(4);
+    expect(result.streakMultiplier).toBe(2.0);
+    expect(result.totalPointsEarned).toBe(2000);
+    expect(result.streakBonus).toBe(1000);
+  });
+
+  it('resets streak to 0 upon an incorrect answer', () => {
+    const result = ScoringService.calculateScore(false, 500, 15, 3);
+    expect(result.newStreak).toBe(0);
+    expect(result.streakMultiplier).toBe(1.0);
+    expect(result.totalPointsEarned).toBe(0);
+  });
 });

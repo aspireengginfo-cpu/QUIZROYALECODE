@@ -70,8 +70,13 @@ export const HowToPlayModal: React.FC<HowToPlayModalProps> = ({ isOpen, onClose 
                 <div className="bg-black/30 px-3 py-1.5 rounded-lg font-mono text-xs text-amber-200 my-1">
                   Speed Bonus = floor(500 × Remaining Time ÷ 15s)
                 </div>
-                <p>• <strong>Max Score:</strong> 1,000 points per question!</p>
-                <p>• <strong>Wrong or Timeout:</strong> 0 points (no penalty).</p>
+                <p>• <strong>🔥 Streak Multiplier:</strong> Answer consecutively for massive bonuses!</p>
+                <div className="bg-purple-950/70 p-2 rounded-xl text-xs space-y-0.5 border border-purple-500/30">
+                  <span className="block">• 2 Correct in a row: <strong>🔥 1.2x Boost</strong></span>
+                  <span className="block">• 3 Correct in a row: <strong>🔥🔥 1.5x Boost</strong></span>
+                  <span className="block">• 4+ Correct in a row: <strong>⚡👑 2.0x DOUBLE POINTS!</strong></span>
+                </div>
+                <p>• <strong>Wrong or Timeout:</strong> 0 points (Streak resets to 0).</p>
               </div>
             </div>
           </div>

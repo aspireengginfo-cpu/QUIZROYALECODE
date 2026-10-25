@@ -43,6 +43,10 @@ export interface Player {
   lastPointsEarned?: number;
   lastAnswerTimeMs?: number;
   correctAnswersCount: number;
+  currentStreak: number;
+  highestStreak: number;
+  lastMultiplier?: number;
+  streakBonusPoints?: number;
   connected: boolean;
   disconnectTimestamp?: number;
 }

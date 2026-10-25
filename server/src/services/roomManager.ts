@@ -66,6 +66,8 @@ export class RoomManager {
       isHost: true,
       hasAnsweredCurrent: false,
       correctAnswersCount: 0,
+      currentStreak: 0,
+      highestStreak: 0,
       connected: true,
     };
 
@@ -157,6 +159,8 @@ export class RoomManager {
       isHost: false,
       hasAnsweredCurrent: false,
       correctAnswersCount: 0,
+      currentStreak: 0,
+      highestStreak: 0,
       connected: true,
     };
 
@@ -332,6 +336,10 @@ export class RoomManager {
       p.lastPointsEarned = undefined;
       p.lastAnswerTimeMs = undefined;
       p.correctAnswersCount = 0;
+      p.currentStreak = 0;
+      p.highestStreak = 0;
+      p.lastMultiplier = undefined;
+      p.streakBonusPoints = undefined;
     });
 
     return room;
