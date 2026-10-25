@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import http from 'http';
 import { Server } from 'socket.io';
 import cors from 'cors';
@@ -49,14 +49,14 @@ if (fs.existsSync(clientDistPath)) {
   console.log(`📦 [STATIC] Serving built client from ${clientDistPath}`);
   app.use(express.static(clientDistPath));
   // Fallback to index.html for SPA client-side routing
-  app.get('*', (req, res, next) => {
+  app.get('*', (req: Request, res: Response, next: NextFunction) => {
     if (req.path.startsWith('/api') || req.path.startsWith('/socket.io')) {
       return next();
     }
     res.sendFile(path.join(clientDistPath, 'index.html'));
   });
 } else {
-  app.get('/', (req, res) => {
+  app.get('/', (req: Request, res: Response) => {
     res.send({
       name: 'Quiz Royale API & Realtime Server',
       status: 'active',
